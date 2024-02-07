@@ -2,8 +2,11 @@ const express = require('express');
 const { pdfLogic } = require('./pdfLogic');
 const { scrapeLogic } = require('./scrapeLogic');
 const puppeteer = require('puppeteer');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+app.use(bodyParser);
 
 const PORT = process.env.PORT || 4000;
 
