@@ -3,17 +3,23 @@ const { pdfLogic } = require('./pdfLogic');
 const { scrapeLogic } = require('./scrapeLogic');
 const puppeteer = require('puppeteer');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(cors());
 
 const PORT = process.env.PORT || 4000;
 
-app.post('/pdf', async (req, res) => {
+app.post('/pdf', cors(), async (req, res) => {
   // pdfLogic(res);
 
   console.log(req.body);
+
+  if (!req.body?.html) {
+    return res.send(`The requested html is empty`);
+  }
 
   // const browser = await puppeteer.launch({
   //   headless: true,
