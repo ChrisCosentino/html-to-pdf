@@ -1,6 +1,7 @@
 const express = require('express');
 const { pdfLogic } = require('./pdfLogic');
 const { scrapeLogic } = require('./scrapeLogic');
+const { puppeteer } = require('puppeteer');
 
 const app = express();
 
